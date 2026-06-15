@@ -242,8 +242,8 @@ def _best_channel_name(entry: ChannelEntry) -> str:
 def _source_sort_key(entry: ChannelEntry) -> Tuple[int, int, str]:
     response = entry.response_time_ms
     return (
-        source_quality_rank(entry),
         response if response is not None else 10_000_000,
+        source_quality_rank(entry),
         entry.order,
         entry.url,
     )

@@ -100,12 +100,12 @@ class IptvFailoverTests(unittest.TestCase):
         self.assertNotIn("央视频道,#genre#", playlist)
         self.assertNotIn("卫视频道,#genre#", playlist)
 
-    def test_sources_put_720p_before_1080p_and_other_quality(self):
+    def test_sources_put_lowest_response_time_before_quality(self):
         channel = group_channels(parse_m3u(QUALITY_SAMPLE))["CCTV1"]
 
-        self.assertEqual(channel.sources[0].url, "http://b.example/live/cctv1-720p.m3u8")
+        self.assertEqual(channel.sources[0].url, "http://c.example/live/cctv1.m3u8")
         self.assertEqual(channel.sources[1].url, "http://a.example/live/cctv1-1080p.m3u8")
-        self.assertEqual(channel.sources[2].url, "http://c.example/live/cctv1.m3u8")
+        self.assertEqual(channel.sources[2].url, "http://b.example/live/cctv1-720p.m3u8")
 
 
 if __name__ == "__main__":
