@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/doubletree6/tvbox-iptv-subscription/main/cn_al
 - Output: `cn_all_tvbox_multi.txt`
 - Format: TVBox `txt` live format, repeated channel names for multiple lines
 - Groups: only `央视`, `卫视`, `其他`
-- Source order inside each channel: `720p` first, then `1080p`, then other/unknown quality
+- Source order inside each channel: lowest `response-time` first; quality is only a tie-breaker (`720p`, then `1080p`, then other/unknown)
 - Update schedule: twice daily at 08:15 and 20:15 Beijing time
 
 ## Manual Build
@@ -23,4 +23,3 @@ https://raw.githubusercontent.com/doubletree6/tvbox-iptv-subscription/main/cn_al
 python3 -m unittest discover -s tests
 python3 -m iptv_failover.server --once cn_all_tvbox_multi.txt --format tvbox-txt
 ```
-
